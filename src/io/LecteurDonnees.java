@@ -6,10 +6,15 @@ import java.util.*;
 import java.util.zip.DataFormatException;
 
 import data.Carte;
+import data.Constants;
+import data.Constants.*;
 import data.DonneesSimulation;
 import data.NatureTerrain;
 import objetscarte.Case;
 import objetscarte.Incendie;
+import objetscarte.Position;
+import robots.Robot;
+import robots.RobotFactory;
 
 
 
@@ -37,8 +42,8 @@ public class LecteurDonnees {
     
     //variables temporaires privees pour stocker les valeurs chargees
     private Carte carteTemp;
-    private HashMap<Case,Incendie> incendies;
-    private ArrayList robots;
+    private Hashtable<Position,Incendie> incendiesTemp;
+    private ArrayList<Robot> robotsTemp;
     
     /**
      * Lit et affiche le contenu d'un fichier de donnees (cases,
@@ -59,11 +64,13 @@ public class LecteurDonnees {
         scanner.close();
         System.out.println("\n == Lecture terminee");
 
-        return new DonneesSimulation();
+        return lecteur.finalizeRead();
     }
 
-
-
+    private DonneesSimulation finalizeRead(){
+        //check we have corrctly set temp attrs? Sincei j ust use it here it shouldn't be an issue
+        return new DonneesSimulation(carteTemp, incendiesTemp, robotsTemp);
+    }
 
     // Tout le reste de la classe est prive!
 
@@ -79,8 +86,8 @@ public class LecteurDonnees {
         scanner.useLocale(Locale.US);
 
         //initialise the private vars
-        incendies = new HashMap<Case,Incendie>();
-        robots = new ArrayList<>();
+        this.incendiesTemp = new Hashtable<Position,Incendie>();
+        this.robotsTemp = new ArrayList<Robot>();
         //no need to initialize carte since it will be done by the lirecarte method 
     }
 
@@ -102,7 +109,7 @@ public class LecteurDonnees {
 
             for (int lig = 0; lig < nbLignes; lig++) {
                 for (int col = 0; col < nbColonnes; col++) {
-                    lireCase(lig, col);
+                    carteTemp.setCase(col, lig, lireCase(lig, col));
                 }
             }
 
@@ -140,7 +147,7 @@ public class LecteurDonnees {
                     + "Attendu: nature altitude [valeur_specifique]");
         }
         System.out.println();
-        return new Case(col, lig, NatureTerrain.valueOf(chaineNature));
+        return new Case(col, lig, chaineNature);
     }
 
 
@@ -170,11 +177,14 @@ public class LecteurDonnees {
     private void lireIncendie(int i) throws DataFormatException {
         ignorerCommentaires();
         System.out.print("Incendie " + i + ": ");
+        int lig;
+        int col;
+        int intensite;
 
         try {
-            int lig = scanner.nextInt();
-            int col = scanner.nextInt();
-            int intensite = scanner.nextInt();
+            lig = scanner.nextInt();
+            col = scanner.nextInt();
+            intensite = scanner.nextInt();
             if (intensite <= 0) {
                 throw new DataFormatException("incendie " + i
                         + "nb litres pour eteindre doit etre > 0");
@@ -188,6 +198,10 @@ public class LecteurDonnees {
             throw new DataFormatException("format d'incendie invalide. "
                     + "Attendu: ligne colonne intensite");
         }
+
+        //TODO: this is weird, please fix me
+        Position newFirePos = new Position(col, lig);
+        this.incendiesTemp.put(newFirePos,  new Incendie(newFirePos));
     }
 
 
@@ -215,14 +229,17 @@ public class LecteurDonnees {
      * @param i
      */
     private void lireRobot(int i) throws DataFormatException {
-        ignorerCommentaires();
+        ignorerCommentaires(); 
         System.out.print("Robot " + i + ": ");
-
+        int lig;
+        int col;
+        int vitesse = Constants.DEFAULT_ROBOT_SPEED;
+        String type;
         try {
-            int lig = scanner.nextInt();
-            int col = scanner.nextInt();
+            lig = scanner.nextInt();
+            col = scanner.nextInt();
             System.out.print("position = (" + lig + "," + col + ");");
-            String type = scanner.next();
+            type = scanner.next();
 
             System.out.print("\t type = " + type);
 
@@ -235,7 +252,7 @@ public class LecteurDonnees {
             if (s == null) {
                 System.out.print("valeur par defaut");
             } else {
-                int vitesse = Integer.parseInt(s);
+                vitesse = Integer.parseInt(s);
                 System.out.print(vitesse);
             }
             verifieLigneTerminee();
@@ -246,6 +263,10 @@ public class LecteurDonnees {
             throw new DataFormatException("format de robot invalide. "
                     + "Attendu: ligne colonne type [valeur_specifique]");
         }
+        
+        Robot r = RobotFactory.createRobot(type, new Position(col, lig));
+        robotsTemp.add(r);
+
     }
 
 

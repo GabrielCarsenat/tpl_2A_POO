@@ -1,22 +1,33 @@
 package robots;
 import objetscarte.*;
+import data.Constants;
 import data.NatureTerrain;
 
 public abstract class Robot {
-    int maxReservoir;
-    int reservoir;
-    int vitesseRemplissage;
-    private Case position;
-    public Robot(Case position){
+
+    // public abstract String getReservoir(); 
+    // public abstract String getReservoirMax(); 
+
+    int vitesse = Constants.DEFAULT_ROBOT_SPEED;
+    private Position position;
+
+    public Robot(Position position){
         this.position=position;
-        this.reservoir=0;
     }
-    public Case getPosition(){
+
+    public Robot(Position position, int vitesse){
+        this(position);
+        this.vitesse=vitesse;
+    }
+    public Position getPosition(){
         return this.position;
     };
-    public void setPosition(Case pos){
+
+    public void setPosition(Position pos){
         this.position=pos;
     }
+
+    //TODO: implement movement
 
     double getVitesse(NatureTerrain terrain){
         if (terrain==NatureTerrain.ROCHE){
@@ -25,8 +36,8 @@ public abstract class Robot {
         return 1.;
     };
 
-    public void deverserEau(int vol){
-        //TODO:on doit garantir reservoir >0
-        reservoir-=vol; 
-    }
+    // public void deverserEau(int vol){
+    //     //TODO:on doit garantir reservoir >0
+    //     reservoir-=vol; 
+    // }
 }
