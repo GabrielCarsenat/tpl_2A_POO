@@ -1,16 +1,24 @@
 package objetscarte;
 
 public class Incendie {
-    private Case position;
+    private Position position;
     private int eauNecessaire;
-    public Incendie(Case position, int eauNecessaire){
+
+    //Initializers:
+    public Incendie(Position position, int eauNecessaire){
         this.position=position;
         this.eauNecessaire=eauNecessaire;
     }
-    public Incendie(Case position){
+    public Incendie(Position position){
         this(position, 0);
     }
+    
+    //getter methods
     public int getEauNecessaire(){
         return eauNecessaire;
+    }
+
+    public Position getPosition(){
+        return this.position;
     }
 }
