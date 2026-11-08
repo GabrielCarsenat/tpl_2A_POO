@@ -1,0 +1,27 @@
+Backend:
+ - [ ] Data loading
+ - Robots
+   - [ ] Abstract
+   - [ ] Implement Robot Types
+   - [ ] Tile discovery and pathfinding (A*)
+//the first robot to be updated, it is always added to the robot list, he is not on the map and resp for handing tasks to other robots
+ - Coordinator
+   - [ ]  
+ - [ ] 
+
+Viz:
+ - Map
+   - [ ] Basic
+   - [ ] Sprites
+   - [ ] Sprite Display
+ - Controls
+   - [ ] step in time
+   - [ ] reload
+
+ - 
+
+
+ROBOT STATE MACHINE
+
+//find a tile i want to extinguish in ACCESSIBLE and THRESH<WATER SUPPLY
+//robots might need to optimise for speed and not fill up wioth water to the max // among nearby targets find an optimal water level for distance to a source, and number of robots able to get to it
