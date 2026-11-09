@@ -28,8 +28,12 @@ public class DonneesSimulation {
         // TODO Auto-generated method stub
         StringBuilder s = new StringBuilder();
         s.append("Donnees Simulation: \n")
-        .append(String.format("No of robots: %d", robots.size()));
-
+        .append(String.format("No of robots: %d\n", robots.size()))
+        .append(carte)
+        .append("Incendies parses:\n");
+        for (Incendie i : incendies.values()) {
+            s.append(i);
+        }
         return s.toString();
     }
 

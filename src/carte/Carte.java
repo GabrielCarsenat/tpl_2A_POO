@@ -60,4 +60,17 @@ public class Carte {
         inBound(col, lig);//throws exception if invalid
         cases[col+lig*largeur]=nouvCase;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("Carte: ");
+        for (int j = 0; j < hauteur; j++) {
+            for (int i = 0; i < largeur; i++) {
+                s.append(cases[i+largeur*j]);
+            }
+            s.append("\n");
+        }
+        return s.toString();
+    }
 }

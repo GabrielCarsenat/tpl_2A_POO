@@ -16,4 +16,22 @@ public class Case extends Position{
     public NatureTerrain getNature(){
         return this.nature;
     }
+
+    @Override
+    public String toString() {
+        switch (nature) {
+            case ROCHE:
+                return "#";
+            case FORET:
+                return "F";
+            case EAU:
+                return "~";
+            case TERRAIN_LIBRE:
+                return " ";
+            case HABITAT:
+                return "@";
+            default:
+                return "?";
+        }
+    }
 }
