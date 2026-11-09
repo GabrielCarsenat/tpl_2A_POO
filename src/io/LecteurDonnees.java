@@ -16,8 +16,6 @@ import robots.Robot;
 import robots.RobotFactory;
 import simulation.DonneesSimulation;
 
-
-
 /**
  * Lecteur de cartes au format spectifié dans le sujet.
  * Les données sur les cases, robots puis incendies sont lues dans le fichier,
@@ -201,7 +199,7 @@ public class LecteurDonnees {
 
         //TODO: this is weird, please fix me
         Position newFirePos = new Position(col, lig);
-        this.incendiesTemp.put(newFirePos,  new Incendie(newFirePos));
+        this.incendiesTemp.put(newFirePos,  new Incendie(newFirePos, intensite));
     }
 
 
@@ -234,14 +232,14 @@ public class LecteurDonnees {
         int lig;
         int col;
         int vitesse = Constants.DEFAULT_ROBOT_SPEED;
-        String type;
+        String nomTypeRobot;
         try {
             lig = scanner.nextInt();
             col = scanner.nextInt();
             System.out.print("position = (" + lig + "," + col + ");");
-            type = scanner.next();
+            nomTypeRobot = scanner.next();
 
-            System.out.print("\t type = " + type);
+            System.out.print("\t type = " + nomTypeRobot);
 
 
             // lecture eventuelle d'une vitesse du robot (entier)
@@ -264,7 +262,7 @@ public class LecteurDonnees {
                     + "Attendu: ligne colonne type [valeur_specifique]");
         }
         
-        Robot r = RobotFactory.createRobot(type, new Position(col, lig));
+        Robot r = RobotFactory.createRobot(nomTypeRobot, new Position(col, lig));
         robotsTemp.add(r);
 
     }

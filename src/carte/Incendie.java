@@ -5,9 +5,9 @@ public class Incendie {
     private int intensite;
 
     //Initializers:
-    public Incendie(Position position, int eauNecessaire){
+    public Incendie(Position position, int intensite){
         this.position=position;
-        this.intensite=eauNecessaire;
+        this.intensite=intensite;
     }
     public Incendie(Position position){
         this(position, 0);

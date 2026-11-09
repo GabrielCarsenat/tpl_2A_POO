@@ -6,9 +6,9 @@ public class Carte {
     private int hauteur;
     private Case[] cases;
     /**
-     * Takes a number and returns its square root.
-     * @param largeur taille selon X.
-     * @param longueur taille selon Y.
+     * Takes a number and returns its square root
+     * @param largeur taille selon X
+     * @param longueur taille selon Y
      * @param tailleCases taille des cases pour le delai de traversee.
      */
     public Carte(int largeur, int longueur, int tailleCases){

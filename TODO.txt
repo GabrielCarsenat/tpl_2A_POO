@@ -1,11 +1,11 @@
 Backend:
- - [-] Data loading
+ - [X] Data loading
  - Robots
    - [X] Abstract
    - [-] Implement Robot Types
    - [ ] Tile discovery and pathfinding (A*)
 //the first robot to be updated, it is always added to the robot list, he is not on the map and resp for handing tasks to other robots
- - Coordinator
+ - Evenements
    - [ ]  
  - [ ] 
 
@@ -20,6 +20,8 @@ Viz:
 //fixes:
 move Constants
 verifier la bonne separation code/test du chargement des data
+toString robots
+
 
 ROBOT STATE MACHINE
 
