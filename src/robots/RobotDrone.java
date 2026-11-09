@@ -1,6 +1,6 @@
 package robots;
 
-import objetscarte.Position;
+import carte.Position;
 
 public class RobotDrone extends Robot{
     public RobotDrone(Position position){

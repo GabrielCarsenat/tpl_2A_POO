@@ -1,4 +1,4 @@
-package objetscarte;
+package carte;
 
 public class Incendie {
     private Position position;

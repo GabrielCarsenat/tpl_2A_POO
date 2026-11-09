@@ -1,5 +1,5 @@
 package robots;
-import objetscarte.Position;
+import carte.Position;
 /**
  * RobotEnum
  */

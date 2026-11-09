@@ -1,7 +1,5 @@
 package robots;
-import objetscarte.*;
-import data.Constants;
-import data.NatureTerrain;
+import carte.*;
 
 public abstract class Robot {
 
@@ -40,4 +38,6 @@ public abstract class Robot {
     //     //TODO:on doit garantir reservoir >0
     //     reservoir-=vol; 
     // }
+
+    //
 }

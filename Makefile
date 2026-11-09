@@ -21,10 +21,13 @@
 #   -classpath : repertoire dans lequel sont cherches les .class deja compiles
 #   -sourcepath : repertoire dans lequel sont cherches les .java (dependances)
 
-all: testInvader testLecture
+all: testInvader testLecture testAffichage
 
 testInvader:
 	javac -d bin -classpath lib/gui.jar -sourcepath src src/TestInvader.java
+
+testAffichage:
+	javac -d bin -classpath lib/gui.jar -sourcepath src src/TestAffichage.java
 
 testLecture:
 	javac -d bin -sourcepath src src/TestLecteurDonnees.java
@@ -36,6 +39,9 @@ testLecture:
 #   > make exeInvader
 exeInvader: 
 	java -classpath bin:lib/gui.jar TestInvader
+
+exeAffichage: 
+	java -classpath bin:lib/gui.jar TestAffichage
 
 exeLecture: 
 	java -classpath bin TestLecteurDonnees cartes/carteSujet.map

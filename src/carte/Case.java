@@ -1,6 +1,4 @@
-package objetscarte;
-
-import data.NatureTerrain;
+package carte;
 
 public class Case extends Position{
     private NatureTerrain nature;

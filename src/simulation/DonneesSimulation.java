@@ -1,11 +1,12 @@
-package data;
+package simulation;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import objetscarte.Position;
+import carte.Carte;
+import carte.Incendie;
+import carte.Position;
 import robots.Robot;
-import objetscarte.Incendie;
 
 /**
  * DonneesSimulation

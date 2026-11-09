@@ -1,6 +1,4 @@
-package data;
-
-import objetscarte.*;
+package carte;
 
 public class Carte {
     private int tailleCases;
@@ -37,6 +35,20 @@ public class Carte {
             return;
         }
         throw new IndexOutOfBoundsException("Les coordonnees de la case demandee sortent de la carte.");
+    }
+
+    public Case getVoisin(Case src, Direction d){
+        int x = src.getX();
+        int y = src.getY();
+        switch (d) {
+            case EST: return getCase(x+1, y);
+            case OUEST: return getCase(x-1, y);
+            case NORD: return getCase(x, y+1);
+            case SUD: return getCase(x, y-1);
+            default:
+                break;
+        }
+        throw new IllegalArgumentException("Direction should be NORTH|SOUTH|WEST|EAST");
     }
 
     public Case getCase(int col, int lig){

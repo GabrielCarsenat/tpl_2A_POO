@@ -1,4 +1,4 @@
-package data;
+package carte;
 
 
 //TODO: see if it's really ok but this way of sharing constants seems alright

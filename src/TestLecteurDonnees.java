@@ -1,10 +1,9 @@
 
 import io.LecteurDonnees;
+import simulation.DonneesSimulation;
 
 import java.io.FileNotFoundException;
 import java.util.zip.DataFormatException;
-
-import data.DonneesSimulation;
 
 public class TestLecteurDonnees {
 

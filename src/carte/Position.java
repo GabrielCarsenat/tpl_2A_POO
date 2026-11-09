@@ -1,4 +1,4 @@
-package objetscarte;
+package carte;
 
 import java.util.Objects;
 
