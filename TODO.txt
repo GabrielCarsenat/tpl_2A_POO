@@ -22,7 +22,7 @@ Viz:
 
 //fixes:
 move Constants
-
+verifier la bonne separation code/test du chargement des data
 
 ROBOT STATE MACHINE
 
