@@ -1,8 +1,8 @@
 Backend:
- - [ ] Data loading
+ - [-] Data loading
  - Robots
-   - [ ] Abstract
-   - [ ] Implement Robot Types
+   - [X] Abstract
+   - [-] Implement Robot Types
    - [ ] Tile discovery and pathfinding (A*)
 //the first robot to be updated, it is always added to the robot list, he is not on the map and resp for handing tasks to other robots
  - Coordinator
@@ -14,9 +14,6 @@ Viz:
    - [ ] Basic
    - [ ] Sprites
    - [ ] Sprite Display
- - Controls
-   - [ ] step in time
-   - [ ] reload
 
  - 
 
