@@ -2,6 +2,7 @@ package simulation;
 
 import java.util.PriorityQueue;
 
+import carte.Carte;
 import event.Evenement;
 import gui.GUISimulator;
 import gui.Rectangle;
@@ -15,16 +16,16 @@ public class Simulateur implements Simulable{
     private GUISimulator gui;
     private PriorityQueue<Evenement> eventHeap;
 
-    public Simulateur(){
-        super();
-        this.dateSimulation=0;
+    private DonneesSimulation donnees;
+    
+    public Simulateur(GUISimulator gs){
+        this.setGUISim(gs);
+        gui.setSimulable(this);
         //init all state and map load
     }
 
-    public Simulateur(GUISimulator gs){
-        this();
-        this.setGUISim(gs);
-        //init all state and map load
+    public void setDonnees(DonneesSimulation donnees) {
+        this.donnees = donnees;
     }
 
     public void setGUISim(GUISimulator guisim) {
@@ -65,77 +66,20 @@ public class Simulateur implements Simulable{
 
     private void draw() {
         gui.reset();	// clear the window
-        int x=0;
-        int y=0;
-        Color invaderColor = Color.RED;	
-        gui.addGraphicalElement(new Rectangle(x + 30, y     , invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y     , invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 50, y     , invaderColor, invaderColor, 10));
+        Carte c = donnees.getCarte();
+        int tailleCases=c.getTailleCases();
+        tailleCases=10;
+        int w = c.getNbColonnes();
+        int h = c.getNbLignes();
 
-        gui.addGraphicalElement(new Rectangle(x + 20, y + 10, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 30, y + 10, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 10, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 50, y + 10, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 60, y + 10, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x + 10, y + 20, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 20, y + 20, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 30, y + 20, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 20, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 50, y + 20, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 60, y + 20, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 70, y + 20, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x     , y + 30, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 10, y + 30, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 30, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 70, y + 30, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 80, y + 30, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x     , y + 40, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 10, y + 40, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 40, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 70, y + 40, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 80, y + 40, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x     , y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 10, y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 20, y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 30, y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 50, y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 60, y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 70, y + 50, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 80, y + 50, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x + 20, y + 60, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 30, y + 60, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 60, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 50, y + 60, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 60, y + 60, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x + 10, y + 70, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 20, y + 70, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 30, y + 70, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 70, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 50, y + 70, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 60, y + 70, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 70, y + 70, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x + 10, y + 80, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 20, y + 80, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 30, y + 80, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 40, y + 80, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 50, y + 80, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 60, y + 80, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 70, y + 80, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Rectangle(x     , y + 90, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 20, y + 90, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 60, y + 90, invaderColor, invaderColor, 10));
-        gui.addGraphicalElement(new Rectangle(x + 80, y + 90, invaderColor, invaderColor, 10));
-
-        gui.addGraphicalElement(new Text(x + 40, y + 120, invaderColor, "INVADER"));
+        for (int i =0; i<w; i++){
+            for (int j =0; j<h; j++){
+                Color color = c.getCase(i, j).getColor(); 
+                gui.addGraphicalElement(new Rectangle(i*tailleCases, j*tailleCases, color, color, tailleCases));
+            }
+        }
+        
+        // gui.addGraphicalElement(new Text(x + 40, y + 120, invaderColor, "INVADER"));
     }
 
     // @Override

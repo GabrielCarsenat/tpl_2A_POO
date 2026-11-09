@@ -23,6 +23,18 @@ public class DonneesSimulation {
         this.robots = robots;
     }
 
+    public Carte getCarte() {
+        return carte;
+    }
+
+    public Hashtable<Position, Incendie> getIncendies() {
+        return incendies;
+    }
+
+    public ArrayList<Robot> getRobots() {
+        return robots;
+    }
+
     @Override
     public String toString() {
         // TODO Auto-generated method stub
