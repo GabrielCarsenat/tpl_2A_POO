@@ -3,7 +3,6 @@ package simulation;
 import java.util.PriorityQueue;
 
 import carte.Carte;
-import event.Evenement;
 import gui.GUISimulator;
 import gui.Rectangle;
 import gui.Simulable;

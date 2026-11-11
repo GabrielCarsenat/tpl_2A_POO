@@ -1,4 +1,4 @@
-package event;
+package simulation;
 
 public abstract class Evenement implements Comparable<Evenement>{
     private long date;
