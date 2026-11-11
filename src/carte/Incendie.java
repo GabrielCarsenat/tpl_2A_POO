@@ -1,5 +1,10 @@
 package carte;
 
+/**
+ * 
+ * La classe Incendie associe une Position position et une intensite;
+ * 
+ */
 public class Incendie {
     private Position position;
     private int intensite;

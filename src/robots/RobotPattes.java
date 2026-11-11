@@ -1,9 +1,38 @@
 package robots;
 
+import carte.NatureTerrain;
 import carte.Position;
 
 public class RobotPattes extends Robot{
-    public RobotPattes(Position position){
-        super(position);
+    private static final int VITESSE_DEFAUT = 100;
+    private static final int VITESSE_MAX = 150;
+    private static final int CAPACITE = 150;
+
+    /**
+     * 
+     * @param position position initiale du robot
+     * @param vitesseFichier vitesse du robot, limitee internalement, fournir valeur negative pour vitesse par defaut
+     */
+    public RobotPattes(Position position, int vitesseFichier){
+        super(position, vitesseFichier, VITESSE_DEFAUT, VITESSE_MAX);
     }
+
+    @Override
+    public int getCapacite() {
+        // TODO Auto-generated method stub
+        return -1; //for inf
+    }
+
+    @Override
+    public double getVitesse(NatureTerrain t) {
+        double multiplier = switch (t) {
+            case ROCHE -> 10;
+            case EAU -> 0; //non traversable
+            default->30;
+        };
+
+        return getVitesse()*multiplier;
+    }
+
+    
 }

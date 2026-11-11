@@ -10,6 +10,11 @@ import robots.Robot;
 
 /**
  * DonneesSimulation
+ * 
+ * Cette classe fait le wrapping de:
+ *   - Une Carte carte;
+ *   - Une HashTable<Position, Incendie> incendies;
+ *   - Une ArrayList<Robot> robots;
  */
 public class DonneesSimulation {
     //pas d'elements a garantir, acces public envisageable
@@ -23,6 +28,8 @@ public class DonneesSimulation {
         this.robots = robots;
     }
 
+
+    //getters renvoient directement l'objet, on laisse l'utilisateur assez libre sur la manipulation des donnees
     public Carte getCarte() {
         return carte;
     }
@@ -35,6 +42,12 @@ public class DonneesSimulation {
         return robots;
     }
 
+    /**
+     * 
+     * Renvoie une representation textuelle du contexte de simulation.
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         // TODO Auto-generated method stub

@@ -6,17 +6,36 @@ public abstract class Robot {
     // public abstract String getReservoir(); 
     // public abstract String getReservoirMax(); 
 
-    int vitesse = Constants.DEFAULT_ROBOT_SPEED;
+    //declaration d'attributs de la classe abstraite
+    int vitesse;
     private Position position;
+    private int reservoir;
 
-    public Robot(Position position){
-        this.position=position;
+    //fonction utilitaire statique pour choisir la vitesse a donner au robot
+    //vitesse donnee, par defaut, ou maximum autorise
+    static protected int capVitesse(int vitesse, int vitesseDefaut, int vitesseMax){
+        return Math.min(vitesse>0?vitesse:vitesseDefaut, vitesseMax);
     }
 
-    public Robot(Position position, int vitesse){
-        this(position);
-        this.vitesse=vitesse;
+    /**
+     * Constructeur de la {@code Robot}, les classes heritant de {@code Robot} doivent s'en servir pour initialiser la position et la vitesse du robot. 
+     * @param positionFichier la {@code Position} initiale du robot
+     * @param vitesseFichier la vitesse lue depuis le fichier de carte > 0
+     */
+    public Robot(Position positionFichier, int vitesseFichier){
+        if(vitesse<=0){
+            throw new IllegalArgumentException("Vitesse robot >0 dans le constructeur de Robot.");    
+        }
+        this.position=positionFichier;
+        this.vitesse=vitesseFichier;
+        this.reservoir=0;
     }
+
+    //permet eviter appel redondant a capvitesse dans les sous-classes.
+    public Robot(Position positionFichier, int vitesseFichier, int vitesseDefaut, int vitesseMax){
+        this(positionFichier, capVitesse(vitesseFichier, vitesseDefaut, vitesseMax));
+    }
+
     public Position getPosition(){
         return this.position;
     };
@@ -27,17 +46,36 @@ public abstract class Robot {
 
     //TODO: implement movement
 
-    double getVitesse(NatureTerrain terrain){
-        if (terrain==NatureTerrain.ROCHE){
-            return 0.1;
+    public int getVitesse(){
+        return this.vitesse;
+    }
+
+    //this method should be implemented by each robot to define speed modifiers on certain tiles
+    public abstract double getVitesse(NatureTerrain t);
+    public boolean estTraversable(Case case1){
+        return this.getVitesse(case1.getNature())>0;
+    }
+
+    public abstract int getCapacite();
+
+    /**
+     * 
+     * @param vol le volume en L a deverser
+     * @return int : le volume effectif deverse (dans la limite du reservoir)
+     */
+    protected int deverserEau(int vol){ 
+        if (getCapacite()==-1){ //capacite infinie
+            return vol;
         }
-        return 1.;
-    };
+        if (reservoir>=vol){
+            reservoir-=vol; 
+            return vol;
+        }
+        int tmp = reservoir;
+        reservoir=0;
+        return tmp;
+        //TODO:on doit garantir reservoir >0
+    }
 
-    // public void deverserEau(int vol){
-    //     //TODO:on doit garantir reservoir >0
-    //     reservoir-=vol; 
-    // }
-
-    //
+    
 }

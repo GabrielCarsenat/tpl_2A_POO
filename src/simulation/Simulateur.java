@@ -20,7 +20,7 @@ public class Simulateur implements Simulable{
     
     public Simulateur(GUISimulator gs){
         this.setGUISim(gs);
-        gui.setSimulable(this);
+        // gui.setSimulable(this); //redundant line
         //init all state and map load
     }
 
@@ -64,11 +64,14 @@ public class Simulateur implements Simulable{
         draw();
     }
 
+    /**
+     * This method redraws the screen from the Simulable's knowledge of the map.
+     */
     private void draw() {
         gui.reset();	// clear the window
         Carte c = donnees.getCarte();
         int tailleCases=c.getTailleCases();
-        tailleCases=10;
+        tailleCases=20;
         int w = c.getNbColonnes();
         int h = c.getNbLignes();
 
@@ -78,6 +81,8 @@ public class Simulateur implements Simulable{
                 gui.addGraphicalElement(new Rectangle(i*tailleCases, j*tailleCases, color, color, tailleCases));
             }
         }
+
+        
         
         // gui.addGraphicalElement(new Text(x + 40, y + 120, invaderColor, "INVADER"));
     }

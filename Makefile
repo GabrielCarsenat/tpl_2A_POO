@@ -41,7 +41,7 @@ exeInvader:
 	java -classpath bin:lib/gui.jar TestInvader
 
 exeAffichage: 
-	java -classpath bin:lib/gui.jar TestAffichage cartes/carteSujet.map
+	java -classpath bin:lib/gui.jar TestAffichage cartes/mushroomOfHell-20x20.map
 
 exeLecture: 
 	java -classpath bin TestLecteurDonnees cartes/carteSujet.map
