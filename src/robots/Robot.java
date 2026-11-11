@@ -18,6 +18,7 @@ public abstract class Robot {
     }
 
     /**
+     * 
      * Constructeur de la {@code Robot}, les classes heritant de {@code Robot} doivent s'en servir pour initialiser la position et la vitesse du robot. 
      * @param positionFichier la {@code Position} initiale du robot
      * @param vitesseFichier la vitesse lue depuis le fichier de carte > 0
