@@ -14,7 +14,7 @@ public class RobotPattes extends Robot{
      * @param vitesseFichier vitesse du robot, limitee internalement, fournir valeur negative pour vitesse par defaut
      */
     public RobotPattes(Position position, int vitesseFichier){
-        super(position, vitesseFichier, VITESSE_DEFAUT, VITESSE_MAX);
+        super(position, 30); //vitesse de 30 auoi qu'il arrive
     }
 
     @Override
@@ -25,13 +25,11 @@ public class RobotPattes extends Robot{
 
     @Override
     public double getVitesse(NatureTerrain t) {
-        double multiplier = switch (t) {
+        return switch (t) {
             case ROCHE -> 10;
             case EAU -> 0; //non traversable
             default->30;
         };
-
-        return getVitesse()*multiplier;
     }
 
     

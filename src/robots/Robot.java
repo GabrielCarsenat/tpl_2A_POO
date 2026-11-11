@@ -7,13 +7,13 @@ public abstract class Robot {
     // public abstract String getReservoirMax(); 
 
     //declaration d'attributs de la classe abstraite
-    int vitesse;
+    double vitesse;
     private Position position;
     private int reservoir;
 
     //fonction utilitaire statique pour choisir la vitesse a donner au robot
     //vitesse donnee, par defaut, ou maximum autorise
-    static protected int capVitesse(int vitesse, int vitesseDefaut, int vitesseMax){
+    static protected double capVitesse(double vitesse, double vitesseDefaut, double vitesseMax){
         return Math.min(vitesse>0?vitesse:vitesseDefaut, vitesseMax);
     }
 
@@ -22,7 +22,7 @@ public abstract class Robot {
      * @param positionFichier la {@code Position} initiale du robot
      * @param vitesseFichier la vitesse lue depuis le fichier de carte > 0
      */
-    public Robot(Position positionFichier, int vitesseFichier){
+    public Robot(Position positionFichier, double vitesseFichier){
         if(vitesse<=0){
             throw new IllegalArgumentException("Vitesse robot >0 dans le constructeur de Robot.");    
         }
@@ -32,7 +32,7 @@ public abstract class Robot {
     }
 
     //permet eviter appel redondant a capvitesse dans les sous-classes.
-    public Robot(Position positionFichier, int vitesseFichier, int vitesseDefaut, int vitesseMax){
+    public Robot(Position positionFichier, double vitesseFichier, double vitesseDefaut, double vitesseMax){
         this(positionFichier, capVitesse(vitesseFichier, vitesseDefaut, vitesseMax));
     }
 
@@ -46,12 +46,13 @@ public abstract class Robot {
 
     //TODO: implement movement
 
-    public int getVitesse(){
+    public double getVitesse(){
         return this.vitesse;
     }
 
     //this method should be implemented by each robot to define speed modifiers on certain tiles
     public abstract double getVitesse(NatureTerrain t);
+
     public boolean estTraversable(Case case1){
         return this.getVitesse(case1.getNature())>0;
     }

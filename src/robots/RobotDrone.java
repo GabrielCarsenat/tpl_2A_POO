@@ -16,7 +16,6 @@ public class RobotDrone extends Robot{
 
     @Override
     public double getVitesse(NatureTerrain t) {
-        // TODO Auto-generated method stub
-        return 0;
+        return getVitesse();
     }
 }
