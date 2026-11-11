@@ -12,22 +12,28 @@ import simulation.events.Evenement;
 import java.awt.Color;
 
 public class Simulateur implements Simulable{
-    private long dateSimulation;
+    private long dateSimulation=0;
     private GUISimulator gui;
     private PriorityQueue<Evenement> eventHeap;
 
     private DonneesSimulation donnees;
     /**
-     * @deprecated Ce constructeur sans argument est destiné uniquement aux tests et aux frameworks de réflexion.
+     * Ce constructeur sans argument est destiné uniquement aux tests et aux frameworks de réflexion.
      * Utilisez {@link #Simulateur( GUISimulator )} en production.
-     * N'oubliez pas de fournir correctement les données de simulation.
+     * N'oubliez pas de fournir correctement les données de simulation. via {@link #setDonnees(DonneesSimulation)}
      */
     public Simulateur(){
         //this empty constructor is only meant to be used for testing event funcs without the gui overhead
-
+        this.eventHeap = new PriorityQueue<>();
+        this.dateSimulation=0;
     }
-
+    /**
+     * Un simulateur vient recevoir les evenements du GUI: le bind dans les deux sens se fait alors automatiquement via ce constructeur.
+     * 
+     * N'oubliez pas de fournir correctement les données de simulation. via {@link #setDonnees(DonneesSimulation)}
+     */
     public Simulateur(GUISimulator gs){
+        this();
         this.setGUISim(gs);
         // gui.setSimulable(this); //redundant line
         //init all state and map load
@@ -47,7 +53,7 @@ public class Simulateur implements Simulable{
     }
 
     public void incrementDate() {
-        this.dateSimulation+=100;
+        this.dateSimulation+=1;
         while (!simulationTerminee()) {
             Evenement e = eventHeap.remove();
             //logic here

@@ -1,32 +1,32 @@
 import java.io.FileNotFoundException;
 import java.util.zip.DataFormatException;
 
+import carte.Position;
 import gui.GUISimulator;
 import io.LecteurDonnees;
+import robots.Robot;
+import robots.RobotFactory;
 import simulation.DonneesSimulation;
 import simulation.Simulateur;
+import simulation.events.*;
 
 public class TestEvenements {
     public static void main(String[] args) {
-
-        DonneesSimulation d;
-        try {
-            d = LecteurDonnees.lire(args[0]);
-        } catch (FileNotFoundException e) {
-            System.out.println("fichier " + args[0] + " inconnu ou illisible");
-            return;
-        } catch (DataFormatException e) {
-            System.out.println("\n\t**format du fichier " + args[0] + " invalide: " + e.getMessage());
-            return;
+        // On crée un simulateur
+        // GUISimulator gs = new Gui()
+        Simulateur simulateur = new Simulateur() ;
+        // On poste un événement [PING] tous les deux pas de temps
+        for (int i = 2 ; i <= 10 ; i += 2) {
+            simulateur.ajouteEvenement(new EvenementMessage(i, " [PING]")) ;
         }
-
-
-        // crée la fenêtre graphique dans laquelle dessiner
-        GUISimulator gui = new GUISimulator(800, 600, Color.BLACK);
-        // crée l'invader, en l'associant à la fenêtre graphique précédente
-        Simulateur s = new Simulateur(gui);
-        s.setDonnees(d);
-
-        s.restart();
+        // On poste un événement [PONG] tous les trois pas de temps
+        for (int i = 3 ; i <= 9 ; i += 3) {
+            simulateur.ajouteEvenement(new EvenementMessage(i, " [PONG]")) ;
+        }
+        // et on suppose que la simulation démarre
+        for(int i=0;i<20;i++){
+            System.out.println(String.format("Step: %d", i));
+            simulateur.incrementDate();
+        }
     }
 }
