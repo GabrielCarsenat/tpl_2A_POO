@@ -1,12 +1,3 @@
-import java.io.FileNotFoundException;
-import java.util.zip.DataFormatException;
-
-import carte.Position;
-import gui.GUISimulator;
-import io.LecteurDonnees;
-import robots.Robot;
-import robots.RobotFactory;
-import simulation.DonneesSimulation;
 import simulation.Simulateur;
 import simulation.events.*;
 

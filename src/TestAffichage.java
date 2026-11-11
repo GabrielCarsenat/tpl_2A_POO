@@ -1,14 +1,8 @@
 import java.awt.Color;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.zip.DataFormatException;
 
 import gui.GUISimulator;
-import gui.Rectangle;
-import gui.Simulable;
-import gui.Text;
 import io.LecteurDonnees;
 import simulation.DonneesSimulation;
 import simulation.Simulateur;
