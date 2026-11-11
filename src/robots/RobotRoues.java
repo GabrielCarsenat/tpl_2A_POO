@@ -8,7 +8,7 @@ public class RobotRoues extends Robot{
     private static final double VITESSE_MAX = 150;
     private static final int CAPACITE = 5000;
     /**
-     * Classe implementant le robot a roues.
+     * Classe implementant le robot a roues: ID="ROUES".
      * 
      * @param position position initiale du robot
      * @param vitesseFichier vitesse du robot, limitee internalement, fournir valeur negative pour vitesse par defaut

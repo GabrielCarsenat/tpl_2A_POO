@@ -7,6 +7,7 @@ import gui.GUISimulator;
 import gui.Rectangle;
 import gui.Simulable;
 import gui.Text;
+import simulation.events.Evenement;
 
 import java.awt.Color;
 
@@ -16,7 +17,16 @@ public class Simulateur implements Simulable{
     private PriorityQueue<Evenement> eventHeap;
 
     private DonneesSimulation donnees;
-    
+    /**
+     * @deprecated Ce constructeur sans argument est destiné uniquement aux tests et aux frameworks de réflexion.
+     * Utilisez {@link #Simulateur( GUISimulator )} en production.
+     * N'oubliez pas de fournir correctement les données de simulation.
+     */
+    public Simulateur(){
+        //this empty constructor is only meant to be used for testing event funcs without the gui overhead
+
+    }
+
     public Simulateur(GUISimulator gs){
         this.setGUISim(gs);
         // gui.setSimulable(this); //redundant line

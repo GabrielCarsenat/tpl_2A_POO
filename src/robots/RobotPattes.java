@@ -8,8 +8,11 @@ public class RobotPattes extends Robot{
     private static final int VITESSE_MAX = 150;
     private static int CAPACITE = -1; //for inf
     /**
+     * Classe implementant le robot a pattes: ID="PATTES".
+     * 
      * @param position position initiale du robot
      * @param vitesseFichier vitesse du robot, limitee internalement, fournir valeur negative pour vitesse par defaut
+     * @see Robot 
      */
     public RobotPattes(Position position, int vitesseFichier){
         super(position, 30); //vitesse de 30 auoi qu'il arrive
