@@ -21,13 +21,16 @@
 #   -classpath : repertoire dans lequel sont cherches les .class deja compiles
 #   -sourcepath : repertoire dans lequel sont cherches les .java (dependances)
 
-all: testInvader testLecture testAffichage
+all: testInvader testLecture testAffichage testEvenements
 
 testInvader:
 	javac -d bin -classpath lib/gui.jar -sourcepath src src/TestInvader.java
 
 testAffichage:
 	javac -d bin -classpath lib/gui.jar -sourcepath src src/TestAffichage.java
+
+testEvenements:
+	javac -d bin -classpath lib/gui.jar -sourcepath src src/TestEvenements.java
 
 testLecture:
 	javac -d bin -sourcepath src src/TestLecteurDonnees.java
@@ -46,5 +49,11 @@ exeAffichage:
 exeLecture: 
 	java -classpath bin TestLecteurDonnees cartes/carteSujet.map
 
+exeEvenements: 
+	java -classpath bin:lib/gui.jar TestEvenements
+
 clean:
 	rm -rf bin/*
+
+docu:
+	python3 -m http.server 3000 --directory doc
