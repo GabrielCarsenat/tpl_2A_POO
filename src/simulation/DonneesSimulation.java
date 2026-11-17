@@ -3,10 +3,10 @@ package simulation;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import carte.Carte;
-import carte.Incendie;
-import carte.Position;
-import robots.Robot;
+import jeu.Carte;
+import jeu.Incendie;
+import jeu.Position;
+import jeu.robots.Robot;
 
 /**
  * DonneesSimulation

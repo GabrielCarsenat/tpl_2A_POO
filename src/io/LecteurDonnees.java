@@ -5,15 +5,15 @@ import java.io.*;
 import java.util.*;
 import java.util.zip.DataFormatException;
 
-import carte.Carte;
-import carte.Case;
-import carte.Constants;
-import carte.Incendie;
-import carte.NatureTerrain;
-import carte.Position;
-import carte.Constants.*;
-import robots.Robot;
-import robots.RobotFactory;
+import jeu.Carte;
+import jeu.Case;
+import jeu.Constants;
+import jeu.Incendie;
+import jeu.NatureTerrain;
+import jeu.Position;
+import jeu.Constants.*;
+import jeu.robots.Robot;
+import jeu.robots.RobotFactory;
 import simulation.DonneesSimulation;
 
 /**

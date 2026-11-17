@@ -2,11 +2,11 @@ package simulation;
 
 import java.util.PriorityQueue;
 
-import carte.Carte;
 import gui.GUISimulator;
 import gui.Rectangle;
 import gui.Simulable;
 import gui.Text;
+import jeu.Carte;
 import simulation.events.Evenement;
 
 import java.awt.Color;
