@@ -20,6 +20,7 @@
 #   -d : repertoire dans lequel sont places les .class compiles
 #   -classpath : repertoire dans lequel sont cherches les .class deja compiles
 #   -sourcepath : repertoire dans lequel sont cherches les .java (dependances)
+HAS_FIREFOX := $(shell if command -v firefox >/dev/null 2>&1; then echo "yes"; fi)
 
 all: testInvader testLecture testAffichage testEvenements
 
@@ -61,6 +62,12 @@ install:
 
 rapport:
 	lib/typst-x86_64-unknown-linux-musl/typst compile Rapport.typ Rapport.pdf 
+ifeq ($(HAS_FIREFOX), yes)
+		@echo "Ouverture du rapport dans Firefox..."
+		firefox Rapport.pdf
+else
+		@echo "Firefox non detecte."
 
+endif
 docu:
 	python3 -m http.server 3000 --directory doc
