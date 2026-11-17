@@ -14,7 +14,7 @@ public abstract class Robot {
     //fonction utilitaire statique pour choisir la vitesse a donner au robot
     //vitesse donnee, par defaut, ou maximum autorise
     static protected double capVitesse(double vitesse, double vitesseDefaut, double vitesseMax){
-        return Math.min(vitesse>0?vitesse:vitesseDefaut, vitesseMax);
+        return Math.min((vitesse>0)?vitesse:vitesseDefaut, vitesseMax);
     }
 
     /**
@@ -24,7 +24,7 @@ public abstract class Robot {
      * @param vitesseFichier la vitesse lue depuis le fichier de carte > 0
      */
     public Robot(Position positionFichier, double vitesseFichier){
-        if(vitesse<=0){
+        if(vitesseFichier<=0){
             throw new IllegalArgumentException("Vitesse robot >0 dans le constructeur de Robot.");    
         }
         this.position=positionFichier;
