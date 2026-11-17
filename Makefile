@@ -55,5 +55,12 @@ exeEvenements:
 clean:
 	rm -rf bin/*
 
+install:
+	chmod +x install.sh
+	./install.sh
+
+rapport:
+	lib/typst-x86_64-unknown-linux-musl/typst compile Rapport.typ Rapport.pdf 
+
 docu:
 	python3 -m http.server 3000 --directory doc
