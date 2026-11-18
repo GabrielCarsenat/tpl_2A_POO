@@ -7,8 +7,8 @@ public abstract class Robot {
     // public abstract String getReservoirMax(); 
 
     //declaration d'attributs de la classe abstraite
-    double vitesse;
     private Position position;
+    private double vitesse;
     private int reservoir;
 
     //fonction utilitaire statique pour choisir la vitesse a donner au robot
@@ -24,12 +24,12 @@ public abstract class Robot {
      * @param vitesseFichier la vitesse lue depuis le fichier de carte > 0
      */
     public Robot(Position positionFichier, double vitesseFichier){
-        if(vitesseFichier<=0){
-            throw new IllegalArgumentException("Vitesse robot >0 dans le constructeur de Robot.");    
-        }
+        // if(vitesseFichier<=0){
+        //     throw new IllegalArgumentException("Vitesse robot >0 dans le constructeur de Robot.");    
+        // }
         this.position=positionFichier;
         this.vitesse=vitesseFichier;
-        this.reservoir=0;
+        this.reservoir = Math.max(0, getCapacite());
     }
 
     //permet eviter appel redondant a capvitesse dans les sous-classes.
@@ -37,12 +37,20 @@ public abstract class Robot {
         this(positionFichier, capVitesse(vitesseFichier, vitesseDefaut, vitesseMax));
     }
 
+
+    //position
     public Position getPosition(){
         return this.position;
     };
 
     public void setPosition(Position pos){
         this.position=pos;
+    }
+
+
+    //capacite
+    public int getReservoir(){
+        return this.reservoir;
     }
 
     //TODO: implement movement
