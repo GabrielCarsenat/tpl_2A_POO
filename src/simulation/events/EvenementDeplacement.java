@@ -1,8 +1,8 @@
 package simulation.events;
 
-import carte.Case;
-import carte.Position;
-import robots.Robot;
+import jeu.Case;
+import jeu.Position;
+import jeu.robots.Robot;
 
 /** Déplace un robot sur une case voisine à une date donnée. */
 public class EvenementDeplacement extends Evenement {
