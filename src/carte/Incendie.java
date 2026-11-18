@@ -27,6 +27,16 @@ public class Incendie {
         return this.position;
     }
 
+    // verse de l'eau, littre restants diminue/
+    public void eteindre(int litres){
+        this.intensite = Math.max(0, this.intensite - litres);
+    }
+
+    // retourne true si l'incendie est éteint
+    public boolean estEteint(){
+        return this.intensite <= 0;
+    }
+
     @Override
     public String toString() {
         return String.format("(%d, %d) Intensite: %d\n", this.position.getX(), this.position.getY(), this.intensite);
