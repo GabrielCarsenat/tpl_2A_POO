@@ -32,6 +32,10 @@ public abstract class Robot {
         this.vitesse=vitesseFichier;
         this.reservoir = Math.max(0, getCapacite());
     }
+    this.position=positionFichier;
+    this.vitesse=vitesseFichier;
+    this.reservoir=0;
+}
 
     //permet eviter appel redondant a capvitesse dans les sous-classes.
     public Robot(Position positionFichier, double vitesseFichier, double vitesseDefaut, double vitesseMax){
