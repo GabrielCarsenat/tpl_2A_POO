@@ -69,9 +69,9 @@ public class Simulateur implements Simulable{
 
     @Override
     public void next() {
-        
+        incrementDate();
+        draw();
     }
-
     //TODO: repris de invader
     @Override
     public void restart() {

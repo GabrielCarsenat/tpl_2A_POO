@@ -10,6 +10,7 @@ public abstract class Robot {
     double vitesse;
     private Position position;
     private int reservoir;
+    private boolean occupe = false;
 
     //fonction utilitaire statique pour choisir la vitesse a donner au robot
     //vitesse donnee, par defaut, ou maximum autorise
@@ -24,12 +25,12 @@ public abstract class Robot {
      * @param vitesseFichier la vitesse lue depuis le fichier de carte > 0
      */
     public Robot(Position positionFichier, double vitesseFichier){
-        if(vitesse<=0){
+        if(vitesseFichier <= 0){
             throw new IllegalArgumentException("Vitesse robot >0 dans le constructeur de Robot.");    
         }
         this.position=positionFichier;
         this.vitesse=vitesseFichier;
-        this.reservoir=0;
+        this.reservoir = Math.max(0, getCapacite());
     }
 
     //permet eviter appel redondant a capvitesse dans les sous-classes.
@@ -59,6 +60,24 @@ public abstract class Robot {
     }
 
     public abstract int getCapacite();
+
+
+    public boolean estOccupe(){
+        return this.occupe;
+    }
+
+    public void setOccupe(boolean occupe){
+        this.occupe = occupe;
+    }
+
+    public int getReservoir(){
+        return this.reservoir;
+    }
+
+    // return true si le robot ne peut plus déverser d'eau
+    public boolean reservoirVide(){
+        return getCapacite() != -1 && this.reservoir <= 0;
+    }
 
     /**
      * 
