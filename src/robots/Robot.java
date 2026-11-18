@@ -31,7 +31,7 @@ public abstract class Robot {
         this.position=positionFichier;
         this.vitesse=vitesseFichier;
         this.reservoir = Math.max(0, getCapacite());
-    }
+    
     this.position=positionFichier;
     this.vitesse=vitesseFichier;
     this.reservoir=0;
